@@ -12,7 +12,7 @@ public class TestBase {
     }
     @AfterSuite
     public void setUp(){
-        app.stop();
+       // app.stop();
 
     }
 }
