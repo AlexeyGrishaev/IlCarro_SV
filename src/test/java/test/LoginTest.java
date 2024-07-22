@@ -15,7 +15,7 @@ public class LoginTest extends TestBase{
 
     @Test
     public void loginSuccess(){
-        app.getHelperUser().openLoginFrom();
+        app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("locker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
 
@@ -25,7 +25,7 @@ public class LoginTest extends TestBase{
     }
     @Test
     public void loginSuccessModel(){
-        app.getHelperUser().openLoginFrom();
+        app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("locker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
 
@@ -35,7 +35,7 @@ public class LoginTest extends TestBase{
     }
     @Test
     public void loginWrongEmailMessage(){
-        app.getHelperUser().openLoginFrom();
+        app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("ocker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
 
@@ -45,7 +45,7 @@ public class LoginTest extends TestBase{
     }
     @Test
     public void loginWrongEmail(){
-        app.getHelperUser().openLoginFrom();
+        app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lockergmail.com","Qwerty1234!");
         app.getHelperUser().submit();
 
@@ -55,7 +55,7 @@ public class LoginTest extends TestBase{
     }
     @Test
     public void loginWrongPassword(){
-        app.getHelperUser().openLoginFrom();
+        app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("locker@gmail.com","werty1234!");
         app.getHelperUser().submit();
 
@@ -65,7 +65,7 @@ public class LoginTest extends TestBase{
     }
     @Test
     public void loginUnregistered(){
-        app.getHelperUser().openLoginFrom();
+        app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("12345locker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
