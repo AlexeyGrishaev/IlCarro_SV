@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     WebDriver wd;
     HelperUser helperUser;
-//s
+
     public void init() {
         wd = new ChromeDriver();
         wd.navigate().to("https://ilcarro.web.app/search");
