@@ -1,10 +1,10 @@
 package main;
 
+import models.User;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class HelperUser extends HelperBase {
     public HelperUser(WebDriver wd) {
@@ -20,7 +20,7 @@ public class HelperUser extends HelperBase {
         type(By.xpath("//input[@type='password']"), password);
     }
 
-    public void submitLoginForm() {
+    public void submit() {
         click(By.xpath("//button[@type='submit']"));
 
     }
@@ -46,7 +46,7 @@ public class HelperUser extends HelperBase {
     }
 
     public String getErrorText() {
-        return wd.findElement(By.xpath("//div[@class='error']")).getText();
+        return wd.findElement(By.xpath("//*[contains(@class,'error')]")).getText();
     }
 
     public boolean btnYallaIsNotActive() {
@@ -54,5 +54,23 @@ public class HelperUser extends HelperBase {
         WebElement element = wd.findElement(By.xpath("//button[@type='submit']"));
         boolean result = element.isEnabled();
         return !result && res;
+    }
+
+    public void openRegistrationForm() {
+        click(By.xpath("//a[text()=' Sign up ']"));
+    }
+
+    public void fillRegistrationForm(User user) {
+        type(By.xpath("//input[@id='name']"), user.getName());
+        type(By.xpath("//input[@id='lastName']"), user.getLastName());
+        type(By.xpath("//input[@id='email']"), user.getEmail());
+        type(By.xpath("//input[@id='password']"), user.getPassword());
+
+    }
+
+    public void checkPolicy() {
+        //click(By.xpath("//label[@for='terms-of-use']"));
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').click()");
     }
 }
