@@ -22,9 +22,11 @@ public class LoginTest extends TestBase{
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
 
         Assert.assertTrue(app.getHelperUser().isLogged());
+        logger.info("Assert checked is element button   'Logout' is present ");
     }
     @Test
     public void loginSuccessModel(){
+        logger.info("Test data --> Email: locker@gmail.com Password: Qwerty1234!");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("locker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
@@ -32,29 +34,35 @@ public class LoginTest extends TestBase{
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
 
         Assert.assertTrue(app.getHelperUser().isLogged());
+        logger.info("Assert checked is element button   'Logout' is present ");
     }
     @Test
     public void loginWrongEmailMessage(){
+        logger.info("Test data --> Email: ocker@gmail.com Password: Qwerty1234!");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("ocker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
 
         Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
         Assert.assertFalse(app.getHelperUser().isLogged());
+        logger.info("Assert checked is element button   'Logout' is present ");
 
     }
     @Test
     public void loginWrongEmail(){
+        logger.info("Test data --> Email: lockergmail.com Password: Qwerty1234!");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lockergmail.com","Qwerty1234!");
         app.getHelperUser().submit();
 
         Assert.assertEquals(app.getHelperUser().getErrorText(), "It'snot look like email");
         Assert.assertFalse(app.getHelperUser().btnYallaIsNotActive());
+        logger.info("Assert checked is element button yalla is active ");
 
     }
     @Test
     public void loginWrongPassword(){
+        logger.info("Test data --> Email: locker@gmail.com Password: werty1234!");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("locker@gmail.com","werty1234!");
         app.getHelperUser().submit();
@@ -65,6 +73,7 @@ public class LoginTest extends TestBase{
     }
     @Test
     public void loginUnregistered(){
+        logger.info("Test data --> Email: 12345locker@gmail.com Password: Qwerty1234!");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("12345locker@gmail.com","Qwerty1234!");
         app.getHelperUser().submit();
