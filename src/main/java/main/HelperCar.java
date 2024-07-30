@@ -170,4 +170,11 @@ public class HelperCar extends HelperBase{
     public void openSerchForm() {
         click(By.xpath("//a[@href='/search']"));
     }
+
+    public void searchNotValidPeriod(String city, String dataFrom, String dataTo) {
+        typeCity(city);
+        clearTextBox(By.id("dates"));
+        type(By.id("dates"),dataFrom+" - "+dataTo);
+        click(By.cssSelector("div.cdk-overlay-backdrop"));
+    }
 }

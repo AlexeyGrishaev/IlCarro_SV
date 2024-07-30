@@ -35,4 +35,14 @@ public class SearchCarTests extends TestBase{
         app.getHelperCar().submit();
         Assert.assertTrue(app.getHelperCar().isListOfCarsAppears());
     }
+    @Test
+    public void searchNegitiveSearch(){
+        int i = new Random().nextInt(1000)+1000;
+        app.getHelperCar().searchNotValidPeriod("Tel Aviv, Israel","12/10/2024","7/16/2024");
+        app.getHelperCar().getScreen("src/test/screenshots"+i+".png");
+        app.getHelperCar().submit();
+        Assert.assertTrue(app.getHelperCar().isYallaButtonNotActive());
+        Assert.assertTrue(app.getHelperCar().getErrorText().contains("You can't pick date before today"));
+
+    }
 }

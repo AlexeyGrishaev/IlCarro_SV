@@ -35,7 +35,15 @@ public class HelperBase {
         }
         element.sendKeys(Keys.DELETE);
     }
-
+    public boolean isYallaButtonNotActive(){
+        boolean res = isElementPresent(By.cssSelector("button[disabled]"));
+        WebElement element = wd.findElement(By.cssSelector("button[type='submit']"));
+        boolean result = element.isEnabled();
+        return res&&!result;
+    }
+    public String getErrorText() {
+        return wd.findElement(By.xpath("//*[contains(@class,'error')]")).getText();
+    }
     public String getMessage() {
         pause(2000);
         return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
